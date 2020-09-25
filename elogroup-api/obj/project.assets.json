@@ -1,11 +1,68 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "DataTransferObjects/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/DataTransferObjects.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataTransferObjects.dll": {}
+        }
+      },
+      "Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "DataTransferObjects": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Interfaces.dll": {}
+        }
+      },
+      "UsersService/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Interfaces": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/UsersService.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UsersService.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "DataTransferObjects/1.0.0": {
+      "type": "project",
+      "path": "../DataTransferObjects/DataTransferObjects.csproj",
+      "msbuildProject": "../DataTransferObjects/DataTransferObjects.csproj"
+    },
+    "Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../Interfaces/Interfaces.csproj",
+      "msbuildProject": "../Interfaces/Interfaces.csproj"
+    },
+    "UsersService/1.0.0": {
+      "type": "project",
+      "path": "../UsersServices/UsersService.csproj",
+      "msbuildProject": "../UsersServices/UsersService.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "DataTransferObjects >= 1.0.0",
+      "Interfaces >= 1.0.0",
+      "UsersService >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\danie\\.nuget\\packages\\": {}
@@ -32,7 +89,17 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\DataTransferObjects\\DataTransferObjects.csproj": {
+              "projectPath": "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\DataTransferObjects\\DataTransferObjects.csproj"
+            },
+            "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\Interfaces\\Interfaces.csproj": {
+              "projectPath": "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\Interfaces\\Interfaces.csproj"
+            },
+            "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\UsersServices\\UsersService.csproj": {
+              "projectPath": "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\UsersServices\\UsersService.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
