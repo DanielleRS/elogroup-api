@@ -3,6 +3,8 @@ using Entities.User;
 using Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,13 +18,33 @@ namespace Repositories
         }
         public async Task<int> Add(UserEntity user)
         {
-            DynamicParameters params = new DynamicParameters();
-            string sqlQuery = @"
+            string sqlInsertQuery = @"
                 INSERT INTO users(user_name, password) values(@userName, @password)
             ";
 
-            var id = await base.ExecutarAsync(sqlQuery, params);
-            return id;
+            string sqlSelectQuery = @"
+                SELECT 
+                    id AS Id, 
+                    user_name AS UserName
+                    password AS Password
+                WHERE user_name = @userName AND password = @password
+            ";
+
+            DynamicParameters insertParameters = new DynamicParameters();
+            insertParameters.Add("@userName", user.UserName, DbType.AnsiString);
+            insertParameters.Add("@password", user.Password, DbType.AnsiString);
+
+            var id = await ExecutarAsync(sqlInsertQuery, insertParameters);
+
+            if(id == 0)
+            {
+                throw new DefaultException();
+            }
+            DynamicParameters selectParameters = new DynamicParameters();
+            selectParameters.Add("@userName", user.UserName, DbType.AnsiString);
+            selectParameters.Add("@password", user.Password, DbType.AnsiString);
+            var newUser = await ObterAsync<UserEntity>(sqlSelectQuery, selectParameters);
+            return newUser.Id;
         }
     }
 }
