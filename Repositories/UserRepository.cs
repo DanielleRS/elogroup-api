@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Utils.Exceptions;
 
 namespace Repositories
 {
@@ -37,13 +38,14 @@ namespace Repositories
             var id = await ExecutarAsync(sqlInsertQuery, insertParameters);
 
             if(id == 0)
-            {
-                throw new DefaultException();
-            }
+                throw new DefaultException(500, "Erro no banco de dados.");
+            
             DynamicParameters selectParameters = new DynamicParameters();
             selectParameters.Add("@userName", user.UserName, DbType.AnsiString);
             selectParameters.Add("@password", user.Password, DbType.AnsiString);
+
             var newUser = await ObterAsync<UserEntity>(sqlSelectQuery, selectParameters);
+
             return newUser.Id;
         }
     }

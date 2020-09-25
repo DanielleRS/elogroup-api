@@ -192,7 +192,8 @@
         "dependencies": {
           "Dapper": "2.0.35",
           "Interfaces": "1.0.0",
-          "System.Data.SqlClient": "4.8.2"
+          "System.Data.SqlClient": "4.8.2",
+          "Utils": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Repositories.dll": {}
@@ -212,6 +213,16 @@
         },
         "runtime": {
           "bin/placeholder/UsersService.dll": {}
+        }
+      },
+      "Utils/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Utils.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Utils.dll": {}
         }
       }
     }
@@ -627,6 +638,11 @@
       "type": "project",
       "path": "../UsersServices/UsersService.csproj",
       "msbuildProject": "../UsersServices/UsersService.csproj"
+    },
+    "Utils/1.0.0": {
+      "type": "project",
+      "path": "../Utils/Utils.csproj",
+      "msbuildProject": "../Utils/Utils.csproj"
     }
   },
   "projectFileDependencyGroups": {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using DataTransferObjects.Users;
-using elogroup_api.Utils.Exceptions;
+using Utils.Exceptions;
 using Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,8 +27,8 @@ namespace elogroup_api.Controllers
         {
             try
             {
-                var result = _registerUserService.Register(registerUserInput);
-                return await Task.FromResult(StatusCode((int)HttpStatusCode.Created, result));
+                var result = await _registerUserService.Register(registerUserInput);
+                return StatusCode((int)HttpStatusCode.Created, result);
             }
             catch (DefaultException e)
             {

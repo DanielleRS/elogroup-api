@@ -1,18 +1,33 @@
 ﻿using DataTransferObjects.Users;
+using Entities.User;
+using Interfaces.Repositories;
 using Interfaces.Services;
 using System;
+using System.Threading.Tasks;
 
 namespace UsersService
 {
     public class RegisterUserService : IRegisterUserService
     {
-        public RegisterUserService()
+        private readonly IUserRepository _userRepository;
+        public RegisterUserService(IUserRepository userRepository)
         {
-
+            _userRepository = userRepository;
         }
-        public string Register(RegisterUserInput request)
+        public async Task<RegisterUserOutput> Register(RegisterUserInput request)
         {
-            throw new NotImplementedException();
+            UserEntity input = new UserEntity()
+            {
+                UserName = request.UserName,
+                Password = request.Password
+            };
+
+            var userId = await _userRepository.Add(input);
+
+            return new RegisterUserOutput()
+            {
+                Id = userId
+            };
         }
     }
 }
