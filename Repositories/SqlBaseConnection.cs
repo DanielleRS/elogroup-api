@@ -4,21 +4,22 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
 
 namespace Repositories
 {
 	public abstract class SqlBaseConnection<TEntidade>
 	{
-		protected readonly string connectionString;
+		protected readonly string connection;
 
 		protected SqlBaseConnection(string connectionString)
 		{
-			this.connectionString = connectionString;
+			this.connection = connectionString;
 		}
 
 		protected IDbConnection ObterConexao()
 		{
-			return new SqlConnection(connectionString);
+			return new SqlConnection(connection);
 		}
 
 		protected async Task<int> ExecutarAsync(string sql, object parametros)
