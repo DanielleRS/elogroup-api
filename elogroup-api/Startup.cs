@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Repositories;
+using Services.LeadServices;
 using Services.UserServices;
 using Utils.Utils.ClientsUrls;
 
@@ -32,7 +33,9 @@ namespace elogroup_api
         {
             services.AddControllers();
             services.AddTransient<IRegisterUserService, RegisterUserService>();
+            services.AddTransient<IRegisterLeadService, RegisterLeadService>();
             services.AddSingleton<IUserRepository>(s => new UserRepository("Data Source=DESKTOP-P7UELKU;Initial Catalog=elogroup;Integrated Security=True"));
+            services.AddSingleton<ILeadRepository>(s => new LeadRepository("Data Source=DESKTOP-P7UELKU;Initial Catalog=elogroup;Integrated Security=True"));
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(builder => 

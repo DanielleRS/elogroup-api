@@ -3,31 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using DataTransferObjects.Users;
-using Utils.Exceptions;
+using DataTransferObjects.Leads;
 using Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
+using Utils.Exceptions;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace elogroup_api.Controllers
 {
-    [Route("api/users")]
+    [Route("api/leads")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class LeadsController : ControllerBase
     {
-        private readonly IRegisterUserService _registerUserService;
-        public UsersController(IRegisterUserService registerUserService)
+        private readonly IRegisterLeadService _registerLeadService;
+
+        public LeadsController(IRegisterLeadService registerLeadService)
         {
-            this._registerUserService = registerUserService;
+            this._registerLeadService = registerLeadService;
         }
 
-        [HttpPost()]
-        public async Task<ActionResult<string>> AddUser([FromBody] RegisterUserInput registerUserInput)
+        // POST api/<LeadsController>
+        [HttpPost]
+        public async Task<ActionResult<string>> AddLead([FromBody] RegisterLeadInput registerLeadInput)
         {
             try
             {
-                var result = await _registerUserService.RegisterUser(registerUserInput);
+                var result = await _registerLeadService.RegisterLead(registerLeadInput);
                 return StatusCode((int)HttpStatusCode.Created, result);
             }
             catch (DefaultException e)
