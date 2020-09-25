@@ -13,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Repositories;
-using UsersService;
+using Services.UserServices;
 
 namespace elogroup_api 
 {
@@ -31,7 +31,7 @@ namespace elogroup_api
         {
             services.AddControllers();
             services.AddTransient<IRegisterUserService, RegisterUserService>();
-            services.AddSingleton<IUserRepository>(s => new UserRepository(""));
+            services.AddSingleton<IUserRepository>(s => new UserRepository("Data Source=DESKTOP-P7UELKU;Initial Catalog=teste01;Integrated Security=True"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -20,15 +20,16 @@ namespace Repositories
         public async Task<int> Add(UserEntity user)
         {
             string sqlInsertQuery = @"
-                INSERT INTO users(user_name, password) values(@userName, @password)
+                INSERT INTO [dbo].[User]([UserName], [Password]) values(@userName, @password)
             ";
 
             string sqlSelectQuery = @"
                 SELECT 
-                    id AS Id, 
-                    user_name AS UserName
-                    password AS Password
-                WHERE user_name = @userName AND password = @password
+                    [Id], 
+                    [UserName],
+                    [Password]
+                FROM [dbo].[User]
+                WHERE UserName = @userName AND Password = @password
             ";
 
             DynamicParameters insertParameters = new DynamicParameters();

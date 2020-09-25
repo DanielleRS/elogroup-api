@@ -5,7 +5,7 @@ using Interfaces.Services;
 using System;
 using System.Threading.Tasks;
 
-namespace UsersService
+namespace Services.UserServices
 {
     public class RegisterUserService : IRegisterUserService
     {

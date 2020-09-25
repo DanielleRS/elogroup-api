@@ -202,17 +202,17 @@
           "bin/placeholder/Repositories.dll": {}
         }
       },
-      "UsersService/1.0.0": {
+      "Services/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Interfaces": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/UsersService.dll": {}
+          "bin/placeholder/Services.dll": {}
         },
         "runtime": {
-          "bin/placeholder/UsersService.dll": {}
+          "bin/placeholder/Services.dll": {}
         }
       },
       "Utils/1.0.0": {
@@ -634,10 +634,10 @@
       "path": "../Repositories/Repositories.csproj",
       "msbuildProject": "../Repositories/Repositories.csproj"
     },
-    "UsersService/1.0.0": {
+    "Services/1.0.0": {
       "type": "project",
-      "path": "../UsersServices/UsersService.csproj",
-      "msbuildProject": "../UsersServices/UsersService.csproj"
+      "path": "../UsersServices/Services.csproj",
+      "msbuildProject": "../UsersServices/Services.csproj"
     },
     "Utils/1.0.0": {
       "type": "project",
@@ -650,7 +650,7 @@
       "DataTransferObjects >= 1.0.0",
       "Interfaces >= 1.0.0",
       "Repositories >= 1.0.0",
-      "UsersService >= 1.0.0"
+      "Services >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -688,8 +688,8 @@
             "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\Repositories\\Repositories.csproj": {
               "projectPath": "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\Repositories\\Repositories.csproj"
             },
-            "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\UsersServices\\UsersService.csproj": {
-              "projectPath": "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\UsersServices\\UsersService.csproj"
+            "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\UsersServices\\Services.csproj": {
+              "projectPath": "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\UsersServices\\Services.csproj"
             }
           }
         }

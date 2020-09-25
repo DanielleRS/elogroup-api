@@ -91,8 +91,8 @@
               "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\Repositories\\Repositories.csproj": {
                 "projectPath": "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\Repositories\\Repositories.csproj"
               },
-              "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\UsersServices\\UsersService.csproj": {
-                "projectPath": "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\UsersServices\\UsersService.csproj"
+              "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\UsersServices\\Services.csproj": {
+                "projectPath": "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\UsersServices\\Services.csproj"
               }
             }
           }
@@ -314,12 +314,12 @@
         }
       }
     },
-    "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\UsersServices\\UsersService.csproj": {
+    "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\UsersServices\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\UsersServices\\UsersService.csproj",
-        "projectName": "UsersService",
-        "projectPath": "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\UsersServices\\UsersService.csproj",
+        "projectUniqueName": "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\UsersServices\\Services.csproj",
+        "projectName": "Services",
+        "projectPath": "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\UsersServices\\Services.csproj",
         "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\UsersServices\\obj\\",
         "projectStyle": "PackageReference",
