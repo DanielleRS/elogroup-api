@@ -5,15 +5,17 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "elogroup-api", "elogroup-api\elogroup-api.csproj", "{47F3673A-354C-4B4F-9547-D3A4AEB34A28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersService", "UsersServices\UsersService.csproj", "{D2BB152D-69C3-4A42-BF9C-02AEBFFAD956}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsersService", "UsersServices\UsersService.csproj", "{D2BB152D-69C3-4A42-BF9C-02AEBFFAD956}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{A94ED562-E257-43C7-B7F3-D07375DC7FA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfaces", "Interfaces\Interfaces.csproj", "{A94ED562-E257-43C7-B7F3-D07375DC7FA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTransferObjects", "DataTransferObjects\DataTransferObjects.csproj", "{9E0B1401-9FE9-4844-ADA5-CABB9DE1F723}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataTransferObjects", "DataTransferObjects\DataTransferObjects.csproj", "{9E0B1401-9FE9-4844-ADA5-CABB9DE1F723}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "Repositories\Repositories.csproj", "{8E578486-F925-412B-AB22-7D04E37B9FB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "Repositories\Repositories.csproj", "{8E578486-F925-412B-AB22-7D04E37B9FB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{F702C3BB-1D05-4FA3-BC21-440BE9C7C52D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{F702C3BB-1D05-4FA3-BC21-440BE9C7C52D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{7F27D41E-0EAE-43EA-AF0E-C0BE72E163D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{F702C3BB-1D05-4FA3-BC21-440BE9C7C52D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F702C3BB-1D05-4FA3-BC21-440BE9C7C52D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F702C3BB-1D05-4FA3-BC21-440BE9C7C52D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F27D41E-0EAE-43EA-AF0E-C0BE72E163D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F27D41E-0EAE-43EA-AF0E-C0BE72E163D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F27D41E-0EAE-43EA-AF0E-C0BE72E163D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F27D41E-0EAE-43EA-AF0E-C0BE72E163D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
