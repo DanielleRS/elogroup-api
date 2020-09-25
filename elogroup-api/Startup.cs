@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Repositories;
 using Services.UserServices;
+using Utils.Utils.ClientsUrls;
 
 namespace elogroup_api 
 {
@@ -31,7 +32,14 @@ namespace elogroup_api
         {
             services.AddControllers();
             services.AddTransient<IRegisterUserService, RegisterUserService>();
-            services.AddSingleton<IUserRepository>(s => new UserRepository("Data Source=DESKTOP-P7UELKU;Initial Catalog=teste01;Integrated Security=True"));
+            services.AddSingleton<IUserRepository>(s => new UserRepository("Data Source=DESKTOP-P7UELKU;Initial Catalog=elogroup;Integrated Security=True"));
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder => 
+                {
+                    builder.WithOrigins("*").AllowAnyHeader().WithMethods("POST", "PUT", "DELETE", "GET", "PATCH");
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +53,8 @@ namespace elogroup_api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 

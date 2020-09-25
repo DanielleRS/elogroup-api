@@ -8,6 +8,6 @@ namespace Interfaces.Repositories
 {
     public interface IUserRepository
     {
-        Task<int> Add(UserEntity user);
+        Task<UserEntity> Add(UserEntity user);
     }
 }

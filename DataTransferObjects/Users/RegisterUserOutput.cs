@@ -6,6 +6,8 @@ namespace DataTransferObjects.Users
 {
     public class RegisterUserOutput
     {
-        public int Id { get; set; }
+        public string Method { get; set; }
+        public string Result { get; set; }
+        public UserDto Payload { get; set; }
     }
 }

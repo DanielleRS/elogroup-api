@@ -22,11 +22,13 @@ namespace Services.UserServices
                 Password = request.Password
             };
 
-            var userId = await _userRepository.Add(input);
+            var user = await _userRepository.Add(input);
 
             return new RegisterUserOutput()
             {
-                Id = userId
+                Method = "Register",
+                Result = user != default ? "SUCCESS" : "ERROR",
+                Payload = user.CreateDto()
             };
         }
     }

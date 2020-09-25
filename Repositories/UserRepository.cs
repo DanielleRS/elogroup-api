@@ -17,7 +17,7 @@ namespace Repositories
         {
 
         }
-        public async Task<int> Add(UserEntity user)
+        public async Task<UserEntity> Add(UserEntity user)
         {
             string sqlInsertQuery = @"
                 INSERT INTO [dbo].[User]([UserName], [Password]) values(@userName, @password)
@@ -36,18 +36,16 @@ namespace Repositories
             insertParameters.Add("@userName", user.UserName, DbType.AnsiString);
             insertParameters.Add("@password", user.Password, DbType.AnsiString);
 
-            var id = await ExecutarAsync(sqlInsertQuery, insertParameters);
+            var insertedRows = await ExecutarAsync(sqlInsertQuery, insertParameters);
 
-            if(id == 0)
+            if(insertedRows == 0)
                 throw new DefaultException(500, "Erro no banco de dados.");
             
             DynamicParameters selectParameters = new DynamicParameters();
             selectParameters.Add("@userName", user.UserName, DbType.AnsiString);
             selectParameters.Add("@password", user.Password, DbType.AnsiString);
 
-            var newUser = await ObterAsync<UserEntity>(sqlSelectQuery, selectParameters);
-
-            return newUser.Id;
+            return await ObterAsync<UserEntity>(sqlSelectQuery, selectParameters);
         }
     }
 }
