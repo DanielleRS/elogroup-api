@@ -1,5 +1,4 @@
 ﻿using DataTransferObjects.Leads;
-using DataTransferObjects.Opportunities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Interfaces.Services
 {
-    public interface IRegisterLeadService
+    public interface IListAllLeadsService
     {
-        Task<RegisterLeadOutput> RegisterLead(RegisterLeadInput request);
+        Task<ListAllLeadsOutput> ListAllLeads(); 
     }
 }

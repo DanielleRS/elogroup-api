@@ -343,6 +343,9 @@
             "projectReferences": {
               "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\Interfaces\\Interfaces.csproj": {
                 "projectPath": "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\Interfaces\\Interfaces.csproj"
+              },
+              "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\Utils\\Utils.csproj": {
+                "projectPath": "C:\\Users\\danie\\Área de Trabalho\\elogroup-backend\\elogroup-api\\Utils\\Utils.csproj"
               }
             }
           }

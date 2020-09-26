@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using DataTransferObjects.Leads;
+using DataTransferObjects.Opportunities;
 using Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 using Utils.Exceptions;
@@ -17,10 +18,18 @@ namespace elogroup_api.Controllers
     public class LeadsController : ControllerBase
     {
         private readonly IRegisterLeadService _registerLeadService;
+        private readonly IListLeadByCustomerService _listLeadByUserService;
+        private readonly IListAllLeadsService _listAllLeadsService;
 
-        public LeadsController(IRegisterLeadService registerLeadService)
+        public LeadsController(
+            IRegisterLeadService registerLeadService, 
+            IListLeadByCustomerService listAllOpportunitiesService,
+            IListAllLeadsService listAllLeadsService
+        )
         {
             this._registerLeadService = registerLeadService;
+            this._listLeadByUserService = listAllOpportunitiesService;
+            this._listAllLeadsService = listAllLeadsService;
         }
 
         // POST api/<LeadsController>
@@ -40,6 +49,44 @@ namespace elogroup_api.Controllers
             {
                 throw;
             }
+        }
+
+        [HttpPost("customer")]
+        public async Task<ActionResult<List<OpportunityDto>>> ListLeadsByCustomer()
+        {
+            try
+            {
+                var result = await _listLeadByUserService.ListLeadByCustomer();
+                return StatusCode((int)HttpStatusCode.OK, result);
+            }
+            catch (DefaultException e)
+            {
+                throw new DefaultException(e.StatusCode, e.Message);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        [HttpGet("")]
+        public async Task<ActionResult<List<OpportunityDto>>> ListAllLeads()
+        {
+            try
+            {
+                var result = await _listAllLeadsService.ListAllLeads();
+                return StatusCode((int)HttpStatusCode.OK, result);
+            }
+            catch (DefaultException e)
+            {
+                throw new DefaultException(e.StatusCode, e.Message);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
     }
 }

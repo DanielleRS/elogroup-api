@@ -9,17 +9,11 @@ namespace DataTransferObjects.Leads
     public class LeadDto
     {
         public int Id { get; set; }
-
         public DateTime Date { get; set; }
-
         public string CustomerName { get; set; }
-
         public string CustomerPhone { get; set; }
-
         public string CustomerEmail { get; set; }
-
         public int StatusId { get; set; }
-
         public List<OpportunityDto> Opportunities { get; set; }
     }
 
@@ -33,10 +27,11 @@ namespace DataTransferObjects.Leads
             return new LeadDto()
             {
                 Id = input.Id,
+                Date = input.Date,
                 CustomerName = input.CustomerName,
                 CustomerPhone = input.CustomerPhone,
                 CustomerEmail = input.CustomerEmail,
-                StatusId = input.StatusId,
+                StatusId = input.StatusId
             };
         }
     }

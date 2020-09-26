@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Entities.Lead;
 using Entities.Oppotunity;
+using Entities.StautsLead;
 using Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
@@ -84,6 +85,80 @@ namespace Repositories
             selectParameters.Add("@leadId", leadId, DbType.Int32);
 
             return await ListarAsync<OpportunityEntity>(sqlSelectQuery, selectParameters);
+        }
+
+        public async Task<IEnumerable<StatusLeadEntity>> ListAllStatusLead()
+        {
+            string sqlSelectQuery = @"
+                SELECT 
+                    [Id],
+                    [Description]
+                FROM [dbo].[StatusLead]
+            ";
+
+            return await ListarAsync<StatusLeadEntity>(sqlSelectQuery, null);
+        }
+
+        public async Task<IEnumerable<OpportunityEntity>> ListAllOpportunities()
+        {
+            string sqlSelectQuery = @"
+                SELECT DISTINCT
+                    [Id],
+                    [LeadId],
+                    [Description]
+                FROM [dbo].[Opportunity]
+            ";
+
+            return await ListarAsync<OpportunityEntity>(sqlSelectQuery, null);
+        }
+
+        public async Task<IEnumerable<LeadEntity>> ListLeadsByCustomer()
+        {
+            string sqlSelectQuery = @"
+                SELECT
+                    l.[Id], 
+                    l.[Date],
+                    l.[CustomerName],
+                    l.[CustomerPhone],
+                    l.[CustomerEmail], 
+                    l.[StatusId]
+                FROM [dbo].[Lead] AS l
+                INNER JOIN [dbo].[Customer] AS c ON l.Id = c.LeadId
+            ";
+
+            return await ListarAsync<LeadEntity>(sqlSelectQuery, null);
+        }
+
+        public async Task<IEnumerable<LeadEntity>> ListAllLeads()
+        {
+            string sqlSelectQuery = @"
+                SELECT
+                    l.[Id], 
+                    l.[Date],
+                    l.[CustomerName],
+                    l.[CustomerPhone],
+                    l.[CustomerEmail], 
+                    l.[StatusId]
+                FROM [dbo].[Lead] AS l
+            ";
+
+            return await ListarAsync<LeadEntity>(sqlSelectQuery, null);
+        }
+
+        public async Task<StatusLeadEntity> GetStatusById(int id)
+        {
+            string sqlSelectQuery = @"
+                SELECT 
+                    [Id],
+                    [Description]
+                FROM [dbo].[StatusLead]
+                WHERE Id = @id
+            ";
+
+            DynamicParameters selectParameters = new DynamicParameters();
+            selectParameters.Add("@id", id, DbType.Int32);
+
+            return await ObterAsync<StatusLeadEntity>(sqlSelectQuery, selectParameters);
         }
     }
 }

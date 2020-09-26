@@ -34,8 +34,12 @@ namespace elogroup_api
             services.AddControllers();
             services.AddTransient<IRegisterUserService, RegisterUserService>();
             services.AddTransient<IRegisterLeadService, RegisterLeadService>();
+            services.AddTransient<IListLeadByCustomerService, ListLeadByCustomerService>();
+            services.AddTransient<IListAllLeadsService, ListAllLeadsService>();
+
             services.AddSingleton<IUserRepository>(s => new UserRepository("Data Source=DESKTOP-P7UELKU;Initial Catalog=elogroup;Integrated Security=True"));
             services.AddSingleton<ILeadRepository>(s => new LeadRepository("Data Source=DESKTOP-P7UELKU;Initial Catalog=elogroup;Integrated Security=True"));
+            
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(builder => 

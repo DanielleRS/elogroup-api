@@ -7,8 +7,11 @@ using Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Utils.Exceptions;
+using Utils.Utils.Enums;
 
 namespace Services.LeadServices
 {
@@ -21,12 +24,16 @@ namespace Services.LeadServices
         }
         public async Task<RegisterLeadOutput> RegisterLead(RegisterLeadInput request)
         {
+            var allStatusLead = await _leadRepository.ListAllStatusLead();
+            if (!allStatusLead.Any())
+                throw new DefaultException((int)HttpStatusCode.InternalServerError, "Nenhum status lead encontrado.");
+
             LeadEntity input = new LeadEntity()
             {
                 CustomerName = request.CustomerName,
                 CustomerEmail = request.CustomerEmail,
                 CustomerPhone = request.CustomerPhone,
-                StatusId = 1 //buscar status no banco: cliente potencial
+                StatusId = allStatusLead.ToList().FirstOrDefault(s => s.Description == "Cliente em Potencial").Id
             };
 
             var lead = await _leadRepository.AddLead(input);

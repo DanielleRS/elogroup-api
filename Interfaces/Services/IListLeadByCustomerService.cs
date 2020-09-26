@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Interfaces.Services
 {
-    public interface IRegisterLeadService
+    public interface IListLeadByCustomerService
     {
-        Task<RegisterLeadOutput> RegisterLead(RegisterLeadInput request);
+        Task<GetLeadOutput> ListLeadByCustomer();
     }
 }
