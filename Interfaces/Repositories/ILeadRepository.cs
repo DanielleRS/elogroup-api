@@ -1,4 +1,5 @@
-﻿using Entities.Lead;
+﻿using Entities.Customer;
+using Entities.Lead;
 using Entities.Oppotunity;
 using Entities.StautsLead;
 using System;
@@ -24,5 +25,8 @@ namespace Interfaces.Repositories
 
         Task<StatusLeadEntity> GetStatusById(int id);
         Task<IEnumerable<LeadEntity>> ListAllLeads();
+        Task<CustomerEntity> AddCustomer(CustomerEntity customer);
+        Task<int> UpdateLeadStatus(int leadId, int newStatusLead);
+        Task<int> UpdateOpportunityDescriptionByLeadId(int leadId, int newOpportunityId, string newOpportunityDescription);
     }
 }

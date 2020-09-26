@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using DataTransferObjects.Customers;
 using DataTransferObjects.Leads;
 using DataTransferObjects.Opportunities;
+using DataTransferObjects.StatusLead;
 using Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 using Utils.Exceptions;
@@ -20,16 +22,21 @@ namespace elogroup_api.Controllers
         private readonly IRegisterLeadService _registerLeadService;
         private readonly IListLeadByCustomerService _listLeadByUserService;
         private readonly IListAllLeadsService _listAllLeadsService;
+        private readonly IRegisterCustomerService _registerCustomerService;
+        private readonly IUpdateLeadInformationsService _updateStatusLeadService;
 
         public LeadsController(
-            IRegisterLeadService registerLeadService, 
+            IRegisterLeadService registerLeadService,
             IListLeadByCustomerService listAllOpportunitiesService,
-            IListAllLeadsService listAllLeadsService
-        )
+            IListAllLeadsService listAllLeadsService,
+            IRegisterCustomerService registerCustomerService, 
+            IUpdateLeadInformationsService updateStatusLeadService)
         {
             this._registerLeadService = registerLeadService;
             this._listLeadByUserService = listAllOpportunitiesService;
             this._listAllLeadsService = listAllLeadsService;
+            this._registerCustomerService = registerCustomerService;
+            this._updateStatusLeadService = updateStatusLeadService;
         }
 
         // POST api/<LeadsController>
@@ -87,6 +94,48 @@ namespace elogroup_api.Controllers
                 throw;
             }
 
+        }
+
+        [HttpPost("{leadId}/customer")]
+        public async Task<ActionResult<string>> AddCustomer([FromRoute] string leadId)
+        {
+            try
+            {
+                if (!Int32.TryParse(leadId, out int intLeadId))
+                    throw new DefaultException((int)HttpStatusCode.BadRequest, "Parâmetro inválido");
+
+                var result = await _registerCustomerService.RegisterCustomer(intLeadId);
+                return StatusCode((int)HttpStatusCode.Created, result);
+            }
+            catch (DefaultException e)
+            {
+                throw new DefaultException(e.StatusCode, e.Message);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpPut("{leadId}/status/{statusId}")]
+        public async Task<ActionResult<UpdatedStatusLeadOutput>> UpdateLeadInformations([FromRoute] string leadId, [FromRoute] string statusId, [FromBody] LeadInformationsInput date)
+        {
+            try
+            {
+                if (!Int32.TryParse(leadId, out int intLeadId) || !Int32.TryParse(statusId, out int intStatusId))
+                    throw new DefaultException((int)HttpStatusCode.BadRequest, "Parâmetro inválido");
+
+                var result = await _updateStatusLeadService.UpdateLeadInformations(intLeadId, intStatusId, date.Date);
+                return StatusCode((int)HttpStatusCode.OK, result);
+            }
+            catch (DefaultException e)
+            {
+                throw new DefaultException(e.StatusCode, e.Message);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

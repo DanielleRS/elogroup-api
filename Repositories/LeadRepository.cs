@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Entities.Customer;
 using Entities.Lead;
 using Entities.Oppotunity;
 using Entities.StautsLead;
@@ -159,6 +160,64 @@ namespace Repositories
             selectParameters.Add("@id", id, DbType.Int32);
 
             return await ObterAsync<StatusLeadEntity>(sqlSelectQuery, selectParameters);
+        }
+
+        public async Task<CustomerEntity> AddCustomer(CustomerEntity customer)
+        {
+            string sqlInsertQuery = @"
+                INSERT INTO [dbo].[Customer]([LeadId]) values(@leadId)
+            ";
+
+            string sqlSelectQuery = @"
+                SELECT 
+                    [Id], 
+                    [LeadId]
+                FROM [dbo].[Customer]
+                WHERE LeadId = @leadId
+            ";
+
+            DynamicParameters insertParameters = new DynamicParameters();
+            insertParameters.Add("@leadId", customer.LeadId, DbType.AnsiString);
+
+            var insertedRows = await ExecutarAsync(sqlInsertQuery, insertParameters);
+
+            if (insertedRows == 0)
+                throw new DefaultException(500, "Erro no banco de dados.");
+
+            DynamicParameters selectParameters = new DynamicParameters();
+            selectParameters.Add("@leadId", customer.LeadId, DbType.Int32);
+
+            return await ObterAsync<CustomerEntity>(sqlSelectQuery, selectParameters);
+        }
+
+        public async Task<int> UpdateLeadStatus(int leadId, int newStatusLead)
+        {
+            string updateSqlQuery = @"
+                UPDATE [dbo].[Lead] 
+                SET [StatusId] = @newStatusLead
+                WHERE [Id] = @leadId
+            ";
+
+            DynamicParameters updateParameters = new DynamicParameters();
+            updateParameters.Add("@newStatusLead", newStatusLead, DbType.Int32);
+            updateParameters.Add("@leadId", leadId, DbType.Int32);
+
+            return await ExecutarAsync(updateSqlQuery, updateParameters);
+        }
+        public async Task<int> UpdateOpportunityDescriptionByLeadId(int leadId, int newOpportunityId, string newOpportunityDescription)
+        {
+            string updateSqlQuery = @"
+                UPDATE [dbo].[Opportunity] 
+                SET [Description] = @newOpportunityDescription
+                WHERE [Id] = @newOpportunityId AND [LeadId] = @leadId
+            ";
+
+            DynamicParameters updateParameters = new DynamicParameters();
+            updateParameters.Add("@leadId", leadId, DbType.Int32);
+            updateParameters.Add("@newOpportunityId", newOpportunityId, DbType.Int32);
+            updateParameters.Add("@newOpportunityDescription", newOpportunityDescription, DbType.AnsiString);
+
+            return await ExecutarAsync(updateSqlQuery, updateParameters);
         }
     }
 }

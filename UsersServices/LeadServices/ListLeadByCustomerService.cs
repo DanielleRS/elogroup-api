@@ -23,13 +23,13 @@ namespace Services.LeadServices
             var allUserLeads = await _leadRepository.ListLeadsByCustomer();
 
             List<BasicLeadDto> leadDto = new List<BasicLeadDto>();
-            allUserLeads.ToList().ForEach(async leadEntity =>
+            foreach (var leadEntity in allUserLeads)
             {
                 var dto = leadEntity.CreateBasicLeadDto();
                 var statusEntity = await _leadRepository.GetStatusById(leadEntity.StatusId);
                 dto.Status = statusEntity.CreateDto();
                 leadDto.Add(dto);
-            });
+            }
 
             return new GetLeadOutput
             {
