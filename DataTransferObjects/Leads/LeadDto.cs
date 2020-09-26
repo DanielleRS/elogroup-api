@@ -1,4 +1,5 @@
 ﻿using DataTransferObjects.Opportunities;
+using DataTransferObjects.StatusLead;
 using Entities.Lead;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace DataTransferObjects.Leads
         public string CustomerName { get; set; }
         public string CustomerPhone { get; set; }
         public string CustomerEmail { get; set; }
-        public int StatusId { get; set; }
+        public StatusLeadDto Status { get; set; }
         public List<OpportunityDto> Opportunities { get; set; }
     }
 
@@ -30,8 +31,7 @@ namespace DataTransferObjects.Leads
                 Date = input.Date,
                 CustomerName = input.CustomerName,
                 CustomerPhone = input.CustomerPhone,
-                CustomerEmail = input.CustomerEmail,
-                StatusId = input.StatusId
+                CustomerEmail = input.CustomerEmail
             };
         }
     }

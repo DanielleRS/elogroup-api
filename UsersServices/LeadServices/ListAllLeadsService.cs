@@ -1,4 +1,5 @@
 ﻿using DataTransferObjects.Leads;
+using DataTransferObjects.StatusLead;
 using Interfaces.Repositories;
 using Interfaces.Services;
 using System;
@@ -20,9 +21,12 @@ namespace Services.LeadServices
         {
             var allLeads = await _leadRepository.ListAllLeads();
             var listLeadDto = new List<LeadDto>();
-            allLeads.ToList().ForEach(leadEntity =>
+            allLeads.ToList().ForEach(async leadEntity =>
             {
-                listLeadDto.Add(leadEntity.CreateDto());
+                var leadDto = leadEntity.CreateDto();
+                var statusEntity = await _leadRepository.GetStatusById(leadEntity.StatusId);
+                leadDto.Status = statusEntity.CreateDto();
+                listLeadDto.Add(leadDto);
             });
 
             return new ListAllLeadsOutput()
