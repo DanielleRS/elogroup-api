@@ -24,19 +24,22 @@ namespace elogroup_api.Controllers
         private readonly IListAllLeadsService _listAllLeadsService;
         private readonly IRegisterCustomerService _registerCustomerService;
         private readonly IUpdateLeadInformationsService _updateStatusLeadService;
+        private readonly IStatusByDescriptionService _statusByDescriptionService;
 
         public LeadsController(
             IRegisterLeadService registerLeadService,
             IListLeadByCustomerService listAllOpportunitiesService,
             IListAllLeadsService listAllLeadsService,
             IRegisterCustomerService registerCustomerService, 
-            IUpdateLeadInformationsService updateStatusLeadService)
+            IUpdateLeadInformationsService updateStatusLeadService,
+            IStatusByDescriptionService statusByDescriptionService)
         {
             this._registerLeadService = registerLeadService;
             this._listLeadByUserService = listAllOpportunitiesService;
             this._listAllLeadsService = listAllLeadsService;
             this._registerCustomerService = registerCustomerService;
             this._updateStatusLeadService = updateStatusLeadService;
+            this._statusByDescriptionService = statusByDescriptionService;
         }
 
         // POST api/<LeadsController>
@@ -83,6 +86,25 @@ namespace elogroup_api.Controllers
             try
             {
                 var result = await _listAllLeadsService.ListAllLeads();
+                return StatusCode((int)HttpStatusCode.OK, result);
+            }
+            catch (DefaultException e)
+            {
+                throw new DefaultException(e.StatusCode, e.Message);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        [HttpGet("status/{description}")]
+        public async Task<ActionResult<string>> GetStatusByDescription([FromRoute] string description)
+        {
+            try
+            {
+                var result = await _statusByDescriptionService.GetStatusByDescription(description);
                 return StatusCode((int)HttpStatusCode.OK, result);
             }
             catch (DefaultException e)

@@ -39,6 +39,7 @@ namespace elogroup_api
             services.AddTransient<IListAllLeadsService, ListAllLeadsService>();
             services.AddTransient<IListLeadByCustomerService, ListLeadByCustomerService>();
             services.AddTransient<IUpdateLeadInformationsService, UpdateLeadInformationsService>();
+            services.AddTransient<IStatusByDescriptionService, GetStatusByDescriptionService>();
 
             services.AddSingleton<IUserRepository>(s => new UserRepository("Data Source=DESKTOP-P7UELKU;Initial Catalog=elogroup;Integrated Security=True"));
             services.AddSingleton<ILeadRepository>(s => new LeadRepository("Data Source=DESKTOP-P7UELKU;Initial Catalog=elogroup;Integrated Security=True"));

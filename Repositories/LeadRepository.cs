@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using DataTransferObjects.StatusLead;
 using Entities.Customer;
 using Entities.Lead;
 using Entities.Oppotunity;
@@ -158,6 +159,22 @@ namespace Repositories
 
             DynamicParameters selectParameters = new DynamicParameters();
             selectParameters.Add("@id", id, DbType.Int32);
+
+            return await ObterAsync<StatusLeadEntity>(sqlSelectQuery, selectParameters);
+        }
+
+        public async Task<StatusLeadEntity> GetStatusByDescription(string description)
+        {
+            string sqlSelectQuery = @"
+                SELECT 
+                    [Id],
+                    [Description]
+                FROM [dbo].[StatusLead]
+                WHERE Description = @description
+            ";
+
+            DynamicParameters selectParameters = new DynamicParameters();
+            selectParameters.Add("@description", description, DbType.AnsiString);
 
             return await ObterAsync<StatusLeadEntity>(sqlSelectQuery, selectParameters);
         }
