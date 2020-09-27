@@ -24,16 +24,17 @@ namespace Services.LeadServices
         }
         public async Task<RegisterLeadOutput> RegisterLead(RegisterLeadInput request)
         {
-            var allStatusLead = await _leadRepository.ListAllStatusLead();
-            if (!allStatusLead.Any())
-                throw new DefaultException((int)HttpStatusCode.InternalServerError, "Nenhum status lead encontrado.");
+            var status = await _leadRepository.AddStatus(request.StatusDescription);
+            //var allStatusLead = await _leadRepository.ListAllStatusLead();
+            //if (!allStatusLead.Any())
+                //throw new DefaultException((int)HttpStatusCode.InternalServerError, "Nenhum status lead encontrado.");
 
             LeadEntity input = new LeadEntity()
             {
                 CustomerName = request.CustomerName,
                 CustomerEmail = request.CustomerEmail,
                 CustomerPhone = request.CustomerPhone,
-                StatusId = allStatusLead.ToList().FirstOrDefault(s => s.Description == "Cliente em Potencial").Id
+                StatusId = status.Id
             };
 
             var lead = await _leadRepository.AddLead(input);

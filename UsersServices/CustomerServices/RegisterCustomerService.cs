@@ -17,7 +17,7 @@ namespace Services.CustomerServices
         {
             _leadRepository = leadRepository;
         }
-        public async Task<RegisterCustomerOutput> RegisterCustomer(int leadId)
+        public async Task<RegisterCustomerOutput> RegisterCustomer(int leadId, string statusDescription)
         {
             CustomerEntity input = new CustomerEntity()
             {
@@ -25,9 +25,10 @@ namespace Services.CustomerServices
             };
 
             var customer = await _leadRepository.AddCustomer(input);
-            var status = await _leadRepository.ListAllStatusLead();
-            var statusConfirmedData = status.FirstOrDefault(s => s.Description == "Dados Confirmados");
-            await _leadRepository.UpdateLeadStatus(leadId, statusConfirmedData.Id);
+            var status = await _leadRepository.AddStatus(statusDescription);
+
+            //var statusConfirmedData = status.FirstOrDefault(s => s.Description == "Dados Confirmados");
+            await _leadRepository.UpdateLeadStatus(leadId, status.Id);
 
             return new RegisterCustomerOutput()
             {

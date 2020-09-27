@@ -26,6 +26,7 @@ namespace Interfaces.Repositories
 
         Task<StatusLeadEntity> GetStatusById(int id);
         Task<StatusLeadEntity> GetStatusByDescription(string description);
+        Task<StatusLeadEntity> AddStatus(string statusDescription);
         Task<IEnumerable<LeadEntity>> ListAllLeads();
         Task<CustomerEntity> AddCustomer(CustomerEntity customer);
         Task<int> UpdateLeadStatus(int leadId, int newStatusLead);

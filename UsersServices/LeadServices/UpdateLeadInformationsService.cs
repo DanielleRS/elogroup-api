@@ -16,7 +16,7 @@ namespace Services.LeadServices
         {
             _leadRepository = leadRepository;
         }
-        public async Task<UpdatedStatusLeadOutput> UpdateLeadInformations(int leadId, int newStatusId, DateTime date)
+        public async Task<UpdatedStatusLeadOutput> UpdateLeadInformations(int leadId, DateTime date, string statusDescription)
         {
             var allOpportunities = await _leadRepository.ListOpportunitiesByLeadId(leadId);
             foreach (var opportunity in allOpportunities)
@@ -25,13 +25,15 @@ namespace Services.LeadServices
                 await _leadRepository.UpdateOpportunityDescriptionByLeadId(leadId, opportunity.Id, opportunity.Description);
             }
 
-            await _leadRepository.UpdateLeadStatus(leadId, newStatusId);
+            var status = await _leadRepository.AddStatus(statusDescription);
+
+            await _leadRepository.UpdateLeadStatus(leadId, status.Id);
             
             return new UpdatedStatusLeadOutput()
             {
                 Method = "UpdateStatusLead",
                 Result = "SUCCESS",
-                NewStatusId = newStatusId
+                NewStatusId = status.Id
             };
         }
     }

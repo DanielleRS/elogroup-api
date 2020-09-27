@@ -8,6 +8,7 @@ using Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Utils.Exceptions;
@@ -179,6 +180,41 @@ namespace Repositories
             return await ObterAsync<StatusLeadEntity>(sqlSelectQuery, selectParameters);
         }
 
+        public async Task<StatusLeadEntity> AddStatus(string statusDescription)
+        {
+            string sqlInsertQuery = @"
+                INSERT INTO [dbo].[StatusLead]([Description]) values(@description)
+            ";
+
+            string sqlSelectQuery = @"
+                SELECT 
+                    [Id], 
+                    [Description]
+                FROM [dbo].[StatusLead]
+                WHERE Description = @description
+            ";
+
+            StatusLeadEntity correctStatus;
+
+            DynamicParameters selectParameters = new DynamicParameters();
+            selectParameters.Add("@description", statusDescription, DbType.AnsiString);
+
+            var result = await ListarAsync<StatusLeadEntity>(sqlSelectQuery, selectParameters);
+            correctStatus = result.FirstOrDefault(s => s.Description == statusDescription);
+
+            if (correctStatus != default)
+                return correctStatus;
+
+            DynamicParameters insertParameters = new DynamicParameters();
+            insertParameters.Add("@description", statusDescription, DbType.AnsiString);
+
+            var insertedRows = await ExecutarAsync(sqlInsertQuery, insertParameters);
+
+            if (insertedRows == 0)
+                throw new DefaultException(500, "Erro no banco de dados.");
+
+            return await ObterAsync<StatusLeadEntity>(sqlSelectQuery, selectParameters);
+        }
         public async Task<CustomerEntity> AddCustomer(CustomerEntity customer)
         {
             string sqlInsertQuery = @"

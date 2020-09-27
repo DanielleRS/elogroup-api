@@ -7,5 +7,6 @@ namespace DataTransferObjects.Leads
     public class LeadInformationsInput
     {
         public DateTime Date { get; set; }
+        public string statusDescription { get; set; }
     }
 }

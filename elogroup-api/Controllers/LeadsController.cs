@@ -119,14 +119,14 @@ namespace elogroup_api.Controllers
         }
 
         [HttpPost("{leadId}/customer")]
-        public async Task<ActionResult<string>> AddCustomer([FromRoute] string leadId)
+        public async Task<ActionResult<string>> AddCustomer([FromRoute] string leadId, [FromBody] RegisterCustomerInput customer)
         {
             try
             {
                 if (!Int32.TryParse(leadId, out int intLeadId))
                     throw new DefaultException((int)HttpStatusCode.BadRequest, "Parâmetro inválido");
 
-                var result = await _registerCustomerService.RegisterCustomer(intLeadId);
+                var result = await _registerCustomerService.RegisterCustomer(intLeadId, customer.StatusDescription);
                 return StatusCode((int)HttpStatusCode.Created, result);
             }
             catch (DefaultException e)
@@ -139,15 +139,15 @@ namespace elogroup_api.Controllers
             }
         }
 
-        [HttpPut("{leadId}/status/{statusId}")]
-        public async Task<ActionResult<UpdatedStatusLeadOutput>> UpdateLeadInformations([FromRoute] string leadId, [FromRoute] string statusId, [FromBody] LeadInformationsInput date)
+        [HttpPut("{leadId}/status")]
+        public async Task<ActionResult<UpdatedStatusLeadOutput>> UpdateLeadInformations([FromRoute] string leadId, [FromBody] LeadInformationsInput leadInformations)
         {
             try
             {
-                if (!Int32.TryParse(leadId, out int intLeadId) || !Int32.TryParse(statusId, out int intStatusId))
+                if (!Int32.TryParse(leadId, out int intLeadId))
                     throw new DefaultException((int)HttpStatusCode.BadRequest, "Parâmetro inválido");
 
-                var result = await _updateStatusLeadService.UpdateLeadInformations(intLeadId, intStatusId, date.Date);
+                var result = await _updateStatusLeadService.UpdateLeadInformations(intLeadId, leadInformations.Date, leadInformations.statusDescription);
                 return StatusCode((int)HttpStatusCode.OK, result);
             }
             catch (DefaultException e)

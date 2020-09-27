@@ -8,6 +8,6 @@ namespace Interfaces.Services
 {
     public interface IRegisterCustomerService
     {
-        Task<RegisterCustomerOutput> RegisterCustomer(int leadId);
+        Task<RegisterCustomerOutput> RegisterCustomer(int leadId, string statusDescription);
     }
 }

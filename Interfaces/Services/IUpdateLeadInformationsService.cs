@@ -8,6 +8,6 @@ namespace Interfaces.Services
 {
     public interface IUpdateLeadInformationsService
     {
-        Task<UpdatedStatusLeadOutput> UpdateLeadInformations(int leadId, int newStatusId, DateTime date);
+        Task<UpdatedStatusLeadOutput> UpdateLeadInformations(int leadId, DateTime date, string statusDescription);
     }
 }
