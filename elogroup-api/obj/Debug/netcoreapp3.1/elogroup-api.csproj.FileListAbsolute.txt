@@ -1,8 +1,3 @@
-C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\obj\Debug\netcoreapp3.1\elogroup-api.csprojAssemblyReference.cache
-C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\obj\Debug\netcoreapp3.1\elogroup-api.AssemblyInfoInputs.cache
-C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\obj\Debug\netcoreapp3.1\elogroup-api.AssemblyInfo.cs
-C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\obj\Debug\netcoreapp3.1\elogroup-api.csproj.CoreCompileInputs.cache
-C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\obj\Debug\netcoreapp3.1\elogroup-api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -23,12 +18,19 @@ C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\bin\
 C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\bin\Debug\netcoreapp3.1\Entities.dll
 C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\bin\Debug\netcoreapp3.1\Interfaces.dll
 C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\bin\Debug\netcoreapp3.1\Repositories.dll
+C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\bin\Debug\netcoreapp3.1\Services.dll
 C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\bin\Debug\netcoreapp3.1\Utils.dll
 C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\bin\Debug\netcoreapp3.1\DataTransferObjects.pdb
 C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\bin\Debug\netcoreapp3.1\Interfaces.pdb
 C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\bin\Debug\netcoreapp3.1\Repositories.pdb
+C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\bin\Debug\netcoreapp3.1\Services.pdb
 C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\bin\Debug\netcoreapp3.1\Entities.pdb
 C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\bin\Debug\netcoreapp3.1\Utils.pdb
+C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\obj\Debug\netcoreapp3.1\elogroup-api.csprojAssemblyReference.cache
+C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\obj\Debug\netcoreapp3.1\elogroup-api.AssemblyInfoInputs.cache
+C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\obj\Debug\netcoreapp3.1\elogroup-api.AssemblyInfo.cs
+C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\obj\Debug\netcoreapp3.1\elogroup-api.csproj.CoreCompileInputs.cache
+C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\obj\Debug\netcoreapp3.1\elogroup-api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\obj\Debug\netcoreapp3.1\elogroup-api.RazorTargetAssemblyInfo.cache
 C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\obj\Debug\netcoreapp3.1\elogroup-api.csproj.CopyComplete
 C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\obj\Debug\netcoreapp3.1\staticwebassets\elogroup-api.StaticWebAssets.Manifest.cache
@@ -36,5 +38,3 @@ C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\obj\
 C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\obj\Debug\netcoreapp3.1\elogroup-api.dll
 C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\obj\Debug\netcoreapp3.1\elogroup-api.pdb
 C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\obj\Debug\netcoreapp3.1\elogroup-api.genruntimeconfig.cache
-C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\bin\Debug\netcoreapp3.1\Services.dll
-C:\Users\danie\Área de Trabalho\elogroup-backend\elogroup-api\elogroup-api\bin\Debug\netcoreapp3.1\Services.pdb

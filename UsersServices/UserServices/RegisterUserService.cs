@@ -14,7 +14,7 @@ namespace Services.UserServices
         {
             _userRepository = userRepository;
         }
-        public async Task<RegisterUserOutput> Register(RegisterUserInput request)
+        public async Task<RegisterUserOutput> RegisterUser(RegisterUserInput request)
         {
             UserEntity input = new UserEntity()
             {
@@ -26,7 +26,7 @@ namespace Services.UserServices
 
             return new RegisterUserOutput()
             {
-                Method = "Register",
+                Method = "RegisterUser",
                 Result = user != default ? "SUCCESS" : "ERROR",
                 Payload = user.CreateDto()
             };

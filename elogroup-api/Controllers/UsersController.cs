@@ -27,7 +27,7 @@ namespace elogroup_api.Controllers
         {
             try
             {
-                var result = await _registerUserService.Register(registerUserInput);
+                var result = await _registerUserService.RegisterUser(registerUserInput);
                 return StatusCode((int)HttpStatusCode.Created, result);
             }
             catch (DefaultException e)

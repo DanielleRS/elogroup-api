@@ -8,6 +8,6 @@ namespace Interfaces.Services
 {
     public interface IRegisterUserService
     {
-        Task<RegisterUserOutput> Register(RegisterUserInput request);
+        Task<RegisterUserOutput> RegisterUser(RegisterUserInput request);
     }
 }

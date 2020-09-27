@@ -209,7 +209,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Interfaces": "1.0.0"
+          "Interfaces": "1.0.0",
+          "Utils": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Services.dll": {}
